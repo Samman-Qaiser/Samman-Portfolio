@@ -1,29 +1,21 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import "./globals.css";
-import SmoothScroll from "../../src/components/SmoothScroll"; // Import karein
 
 export const metadata: Metadata = {
   title: "Samman's Portfolio",
   description: "Web Developer",
   icons: {
-    icon: '/favicon.ico', // public folder se path
-    // Agar apple touch icon dena ho:
+    icon: '/favicon.ico',
     apple: '/apple-touch-icon.png',
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-
-        <SmoothScroll>
-          <main>{children}</main>
-        </SmoothScroll>
+        {children} {/* only children, no client component wrapping */}
       </body>
     </html>
   );

@@ -7,16 +7,18 @@ import HeroSection from "../components/HeroSection";
 import { MusicToggleButton } from "../components/MusicButton";
 import AboutSection from "../components/About";
 import ProjectsSection from "../components/Projects";
-import CustomCursor from "../components/ui/CustomCusror";
+import CustomCursor from "../components/ui/CustomCursor";
 import Services from "../components/Services";
-import ContactReveal from "../components/Cotact";
+import ContactReveal from "../components/Contact";
 import Footer from "../components/Footer";
+import SmoothWrapper from "@/components/SmoothWrapper";
 
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
 
   return (
+    <SmoothWrapper>
     <main>
       <AnimatePresence mode="wait">
         {loading ? (
@@ -48,5 +50,6 @@ export default function Home() {
         )}
       </AnimatePresence>
     </main>
+    </SmoothWrapper>
   );
 }
