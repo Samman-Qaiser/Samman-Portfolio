@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import Staircase from "./Staircase";
 import { gsap } from "gsap";
-import { TypingAnimation } from "@/components/ui/typing-animation"
+import { TypingAnimation } from "../../components/ui/typing-animation"
 export default function Loader({ onComplete }: { onComplete: () => void }) {
   const [isClicked, setIsClicked] = useState(false);
   const [showStaircase, setShowStaircase] = useState(false);

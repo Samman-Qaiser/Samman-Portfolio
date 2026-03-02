@@ -2,16 +2,16 @@
 import { useState } from "react";
 import Loader from "../../src/components/Loader";
 import { motion, AnimatePresence } from "framer-motion";
-import Navbar from "@/src/Navigation";
-import HeroSection from "@/src/components/HeroSection";
-import { MusicToggleButton } from "@/src/components/MusicButton";
-import AboutSection from "@/src/components/About";
-import ProjectsSection from "@/src/components/Projects";
-import CustomCursor from "@/src/components/ui/CustomCusror";
-import Services from "@/src/components/Services";
-import ContactReveal from "@/src/components/Cotact";
-import Footer from "@/src/components/Footer";
-import SkillSection from "@/src/components/Skills";
+import Navbar from "../Navigation";
+import HeroSection from "../components/HeroSection";
+import { MusicToggleButton } from "../components/MusicButton";
+import AboutSection from "../components/About";
+import ProjectsSection from "../components/Projects";
+import CustomCursor from "../components/ui/CustomCusror";
+import Services from "../components/Services";
+import ContactReveal from "../components/Cotact";
+import Footer from "../components/Footer";
+
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
