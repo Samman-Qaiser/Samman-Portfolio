@@ -5,7 +5,7 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import emailjs from '@emailjs/browser';
 import { motion, AnimatePresence } from 'framer-motion';
-import { InteractiveHoverButton } from '../../components/ui/interactive-hover-button';
+import { InteractiveHoverButton } from '../Component/ui/interactive-hover-button';
 
 gsap.registerPlugin(ScrollTrigger);
 
