@@ -9,7 +9,7 @@ import {
   IconMail, 
   IconFileDownload 
 } from "@tabler/icons-react";
-import { TextGenerateEffect } from './ui/text-generate-effect';
+
 
 const AboutSection = () => {
   // Mouse movement for video interaction

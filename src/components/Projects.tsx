@@ -3,8 +3,7 @@ import React, { useState, useMemo } from "react";
 import {projects} from '../data/Projects'
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
+
   ExternalLink,
   Github,
   X,

@@ -1,7 +1,7 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import UnicornScene from "unicornstudio-react";
-import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+
 import { Plane } from "lucide-react";
 import { gsap } from "gsap";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
