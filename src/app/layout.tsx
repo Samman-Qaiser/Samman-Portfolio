@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import SmoothScroll from "../src/components/SmoothScroll"; // Import karein
+import SmoothScroll from "../../src/components/SmoothScroll"; // Import karein
 
 export const metadata: Metadata = {
   title: "Samman's Portfolio",

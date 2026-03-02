@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import Loader from "../src/components/Loader";
+import Loader from "../../src/components/Loader";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/src/Navigation";
 import HeroSection from "@/src/components/HeroSection";
