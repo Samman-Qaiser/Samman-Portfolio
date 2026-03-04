@@ -82,7 +82,7 @@ const services = [
           </div>
           
           <div className="md:text-right">
-            <p className="text-zinc-500 max-w-[280px] text-[10px] leading-loose uppercase tracking-[0.3em] border-l-2 md:border-l-0 md:border-r-2 border-premium-pink pl-4 md:pr-4">
+            <p className="text-primary/90 max-w-[280px] text-[10px] leading-loose uppercase tracking-[0.3em] border-l-2 md:border-l-0 md:border-r-2 border-premium-pink pl-4 md:pr-4">
               I blend creative design with intelligent automation for scalable solutions.
             </p>
           </div>
