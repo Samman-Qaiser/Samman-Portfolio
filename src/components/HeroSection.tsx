@@ -237,7 +237,7 @@ const HeroSection = () => {
           </p>
           <div className="flex items-center justify-end gap-2">
             <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_#22c55e]" />
-            <p className="font-grok text-2xl  sm:text-4xl uppercase italic">Open for Projects</p>
+            <p className="font-grok   sm:text-4xl uppercase italic">Open for Projects</p>
           </div>
         </motion.div>
 
