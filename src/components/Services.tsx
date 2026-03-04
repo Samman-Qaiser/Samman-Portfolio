@@ -82,7 +82,7 @@ const services = [
     </div>
 
     {/* Main Evolving Text Section */}
-    <h2 className="text-lg md:text-xl lg:text-[24px] font-medium  tracking-tight text-primary leading-[1.2] max-w-2xl lg:text-left">
+    <h2 className="text-lg md:text-xl  lg:text-[24px] font-medium  tracking-tight text-primary leading-[1.2] max-w-2xl lg:text-left">
       {[
         "Evolving with every brief and built for impact, my",
         "process spans design, development, and brand",

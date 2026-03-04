@@ -221,8 +221,9 @@ const handleMouseMove = (e: MouseEvent) => {
       ease: "none",
       scrollTrigger: {
         trigger: ".anim-con",
-        start: "top top",
+        start: "bottom bottom",
         end: "+=120%",
+
         scrub: 1,
         pin: true,
         onUpdate: (self) => {
@@ -240,7 +241,7 @@ const handleMouseMove = (e: MouseEvent) => {
       {/* SECTION-SPECIFIC TRAIL CONTAINER */}
       <div ref={trailRef} className="absolute inset-0 pointer-events-none z-[5] overflow-hidden" />
 
-      <div className="anim-con w-[90%] rounded-md mx-auto h-screen flex flex-col items-center justify-center relative bg-premium-pink">
+      <div className="anim-con  w-[90%] rounded-md mx-auto h-screen flex flex-col items-center justify-center relative bg-premium-pink">
         
         {/* EYES */}
         <div className="flex gap-10 mb-12 z-10">
