@@ -77,7 +77,7 @@ export const MusicToggleButton = () => {
         <motion.span
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 0.4, y: 0 }}
-          className="font-monaco text-[8px] uppercase tracking-[0.4em] text-white whitespace-nowrap"
+          className="font-monaco text-[8px] uppercase tracking-[0.4em] text-primary whitespace-nowrap"
         >
           Click to play vibe
         </motion.span>

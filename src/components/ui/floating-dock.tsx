@@ -1,5 +1,5 @@
 "use client";
-import { cn } from "../../../lib/utils";
+import { cn } from "../../lib/utils";
 import { IconLayoutNavbarCollapse } from "@tabler/icons-react";
 import {
   AnimatePresence,
@@ -43,7 +43,7 @@ const FloatingDockMobile = ({
         {open && (
           <motion.div
             layoutId="nav"
-            className="absolute inset-x-0 bottom-full mb-2 flex flex-col gap-2"
+            className="absolute inset-x-0 -bottom-12 mt-28 flex  gap-2"
           >
             {items.map((item, idx) => (
               <motion.div
@@ -93,7 +93,7 @@ const FloatingDockDesktop = ({
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "mx-auto hidden h-16 items-end gap-4 rounded-2xl bg-gray-50 px-4 pb-3 md:flex dark:bg-neutral-900",
+        "mx-auto hidden h-16 items-end gap-4 rounded-2xl bg-gray-50 px-4 pb-3 md:flex dark:bg-transparent",
         className
       )}
     >

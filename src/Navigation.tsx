@@ -8,7 +8,7 @@ import { Menu, X } from "lucide-react";
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "Projects", href: "#projects" },
-  { name: "Experience", href: "#experience" },
+  { name: "Services", href: "#services" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -39,7 +39,7 @@ export default function Navbar() {
   if (!mounted) return null;
 
   return (
-    <nav className="fixed h-[10vh] top-0 left-0 w-full z-100 flex items-center justify-between px-4 md:px-12 py-5">
+    <nav className="fixed h-[10vh]  top-0 left-0 w-full z-100 flex items-center justify-between px-4 md:px-12 py-5">
       {/* --- LEFT: LOGO --- */}
       <div className="relative w-[200px] h-[60px]">
         <img

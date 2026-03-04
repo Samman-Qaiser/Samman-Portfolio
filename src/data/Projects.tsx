@@ -136,6 +136,16 @@ export const projects = [
     liveUrl: "https://www.kaira.luxury/",
     featured: true,
   },
+   {
+    title: "Suriya String",
+    description:
+      "Developed the complete Surya String Shopify store from scratch, handling full store setup, product uploads, and payment gateway integration. Implemented low inventory alerts, Shiprocket delivery integration, automated order syncing to Google Sheets via Zapier, custom invoice generation, Google Analytics & Tag Manager setup, and automatic WhatsApp notifications for order placements.",
+    image: "/suryastring.png",
+    category: "Shopify",
+    technologies: ["Shopify"],
+    liveUrl: "https://suryastring.in/",
+    featured: true,
+  },
   {
     title: "LMS System",
     description:
@@ -151,6 +161,23 @@ export const projects = [
       "MC4WP: Mailchimp for WordPress",
     ],
     liveUrl: "#",
+    githubUrl: "#",
+    featured: true,
+  },
+    {
+    title: "Him Aura",
+    description:
+      "HIM AURA, a Shimla-based business process and customer engagement company, combines global standards with deep local expertise to empower growing businesses. I architected and fully customized their WordPress website—transforming the theme with bespoke HTML/CSS enhancements and refined animations to craft a sophisticated digital experience.",
+    image: "/himaura.png",
+    category: "WordPress",
+    technologies: [
+      "Elementor",
+      "HTML",
+      "CSS",
+      "GSAP"
+ 
+    ],
+    liveUrl: "https://himauraglobalsollutions.in/",
     githubUrl: "#",
     featured: true,
   },

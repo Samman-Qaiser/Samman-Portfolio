@@ -159,19 +159,42 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* ── LAYER 4: Hero image ── */}
+    {/* ── LAYER 4: Hero image with Reveal Effect ── */}
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
-        /* On mobile: take 80% of height, centered nicely */
-        className="relative z-30 h-[80svh] sm:h-full w-auto flex items-end sm:items-center justify-center"
+        className="relative z-30 h-[80vh] sm:h-full w-full flex items-end sm:items-center justify-center overflow-hidden"
       >
+        {/* Base Image (Girl) */}
         <img
-          src={isDark?"/herogirldark.png":"/herogirllight.jpg"}
-          className="h-full w-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+          src={isDark ? "/herogirldark.png" : "/herogirllight.jpg"}
+          className="h-full  w-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
           alt="Hero"
         />
+
+        {/* Masked Reveal Image (Samman) - Ye Girl ke bilkul upar hai lekin sirf mask area mein dikhegi */}
+        <svg
+          className="absolute inset-0 w-full h-full pointer-events-none"
+          preserveAspectRatio="xMidYMid slice"
+        >
+          <defs>
+            {/* Hum wahi same mask ID use kar sakte hain jo upar define ki hai */}
+          </defs>
+          <foreignObject
+            mask="url(#jelly-reveal-mask)"
+            width="100%"
+            height="100%"
+          >
+            <div className="w-full h-[80vh] sm:h-full  relative xs:top-[55vh] sm:top-[23vh] lg:top-[11vh] flex items-end sm:items-center justify-center">
+              <img
+                src={isDark ? "/sammandark.png" : "/sammanlight.png"}
+                className="h-full w-auto object-center object-contain"
+                alt="Samman Reveal"
+              />
+            </div>
+          </foreignObject>
+        </svg>
       </motion.div>
 
       {/* ── LAYER 5: Text UI ── */}
@@ -251,7 +274,7 @@ const HeroSection = () => {
             {["MERN Stack", "Shopify & WordPress"].map((tag) => (
               <span
                 key={tag}
-                className="text-[11px] sm:text-[14px] px-2.5 sm:px-3 py-0.5 sm:py-1 border border-premium-pink rounded-full text-premium-pink uppercase tracking-widest"
+                className="text-[9px] sm:text-[10px] px-2.5 sm:px-3 py-0.5 sm:py-1 border border-premium-pink rounded-full  uppercase tracking-widest"
               >
                 {tag}
               </span>

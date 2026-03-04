@@ -58,7 +58,7 @@ const services = [
 ];
 
   return (
-    <section className="py-24 bg-background h-100vh overflow-hidden font-sans">
+    <section id='services' className="py-24 bg-background h-100vh overflow-hidden font-sans">
       {/* --- Header Section --- */}
       <div className="px-6 md:px-12 lg:px-20 mb-20">
         <motion.div
@@ -94,7 +94,7 @@ const services = [
         {services.map((service, i) => (
           <motion.div
             key={service.id}
-            className="group relative overflow-hidden rounded-[30px] cursor-pointer"
+            className="group relative overflow-hidden rounded-md cursor-pointer"
             animate={{ 
               flex: hovered === i ? 4 : 1, // Increased ratio for more space
             }}
@@ -107,7 +107,7 @@ const services = [
               style={{ backgroundImage: `url(${service.img})` }}
               animate={{ 
                 scale: hovered === i ? 1.05 : 1.2,
-                filter: hovered === i ? "grayscale(0%) brightness(0.7)" : "grayscale(100%) brightness(0.4)"
+                filter: hovered === i ? "grayscale(0%) brightness(1)" : "grayscale(100%) brightness(0.4)"
               }}
               transition={{ duration: 1 }}
             />
