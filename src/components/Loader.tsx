@@ -7,12 +7,14 @@ import { gsap } from "gsap";
 import { TypingAnimation } from "../Component/ui/typing-animation";
 import { InteractiveHoverButton } from "@/Component/ui/interactive-hover-button";
 import JasmineSVG from "./ui/Jasmine";
+import { useMusic } from "./MusicContext";
 
 export default function Loader({ onComplete }: { onComplete: () => void }) {
   const [isClicked, setIsClicked] = useState(false);
   const [showStaircase, setShowStaircase] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [drawingFinished, setDrawingFinished] = useState(false);
+const { playMusic } = useMusic();
 
   const containerRef = useRef<HTMLDivElement>(null);
   const nameRef = useRef<HTMLDivElement>(null);
@@ -40,8 +42,17 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
       window.scrollTo(0, 0);
     }
   }, []);
+const audioRef = useRef<HTMLAudioElement | null>(null);
 
+useEffect(() => {
+  setMounted(true);
+  if (typeof window !== "undefined") {
+    window.scrollTo(0, 0);
+ 
+  }
+}, []);
 const handleEnter = () => {
+playMusic();
     setIsClicked(true);
     const tl = gsap.timeline();
 
