@@ -58,36 +58,57 @@ const services = [
 ];
 
   return (
-    <section id='services' className="py-24 bg-background h-100vh overflow-hidden font-sans">
+    <section id='services' className="py-8 bg-background h-100vh overflow-hidden font-sans">
       {/* --- Header Section --- */}
-      <div className="px-6 md:px-12 lg:px-20 mb-20">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-10"
-        >
-          <div className="max-w-3xl">
-               <span className="text-xs uppercase tracking-[0.3em] text-premium-pink font-medium">
-            03 / Services
-          </span>
-        
-            <h2 className="text-5xl md:text-8xl font-grok text-primary uppercase italic leading-[0.8]">
-              HOW <br />
-              <span className="text-premium-pink italic">
-                I CAN HELP
-              </span>
-            </h2>
-          </div>
-          
-          <div className="md:text-right">
-            <p className="text-primary/90 max-w-[280px] text-[10px] leading-loose uppercase tracking-[0.3em] border-l-2 md:border-l-0 md:border-r-2 border-premium-pink pl-4 md:pr-4">
-              I blend creative design with intelligent automation for scalable solutions.
-            </p>
-          </div>
-        </motion.div>
-      </div>
+<div className="px-6 md:px-12 lg:px-20 mb-20">
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: false, amount: 0.2 }} // Re-animates every time it comes into view
+    transition={{ duration: 0.8 }}
+    className="flex flex-col md:flex-row md:items-end justify-between gap-10"
+  >
+    <div className="max-w-3xl">
+      <span className="text-xs uppercase tracking-[0.3em] text-premium-pink font-medium">
+        03 / Services
+      </span>
+
+      <h2 className="text-5xl md:text-8xl font-grok text-primary uppercase italic leading-[0.8]">
+        HOW <br />
+        <span className="text-premium-pink italic">
+          I CAN HELP
+        </span>
+      </h2>
+    </div>
+
+    {/* Main Evolving Text Section */}
+    <h2 className="text-lg md:text-xl lg:text-2xl  tracking-tight text-primary leading-[1.2] max-w-2xl lg:text-left">
+      {[
+        "Evolving with every brief and built for impact, my",
+        "process spans design, development, and brand",
+        "strategy—aligning vision with execution to bring",
+        "clarity and edge to every project."
+      ].map((line, i) => (
+        <div key={i} className="overflow-hidden">
+          <motion.span
+            initial={{ y: "100%" }}
+            whileInView={{ y: 0 }}
+            // once: false matlab har baar scroll pe animation hogi
+            viewport={{ once: false, amount: 0.8 }} 
+            transition={{ 
+              duration: 1, 
+              delay: i * 0.1, 
+              ease: [0.16, 1, 0.3, 1] 
+            }}
+            className="block"
+          >
+            {line}
+          </motion.span>
+        </div>
+      ))}
+    </h2>
+  </motion.div>
+</div>
 
       {/* --- Accordion Cards --- */}
       <div className="flex flex-col md:flex-row  md:h-[600px] w-full max-w-[1400px] mx-auto gap-3 px-6">
@@ -119,40 +140,55 @@ const services = [
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10" />
 
             {/* Content Container */}
-            <div className="relative z-20 h-full w-full flex flex-col justify-end p-6 md:p-10">
-              <AnimatePresence mode="popLayout">
-                {hovered === i ? (
-                  <motion.div
-                    key="active-content"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    className="w-full"
-                  >
-                    <div className="flex items-center gap-4 mb-4">
-                        <span className="text-premium-pink font-bold text-sm tracking-tighter">{service.id}</span>
-                        <div className="h-[1px] w-12 bg-premium-pink/50" />
-                        <span className="text-white/60 text-[9px] tracking-[0.4em] uppercase">{service.subtitle}</span>
-                    </div>
-                    <h3 className="text-white text-3xl md:text-5xl font-black tracking-tighter mb-4 leading-none">
-                      {service.title}
-                    </h3>
-                    <p className="text-zinc-400 text-xs md:text-sm max-w-md tracking-wide leading-relaxed">
-                      {service.description}
-                    </p>
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="inactive-title"
-                    className="absolute inset-0 flex items-center justify-center pointer-events-none"
-                  >
-                    <p className="text-white/30 font-black tracking-[0.5em] uppercase rotate-90 whitespace-nowrap text-[10px] group-hover:text-premium-pink transition-colors">
-                      {service.title}
-                    </p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+         {/* Content Container */}
+<div className="relative z-20 h-full w-full flex flex-col justify-end p-4 md:p-8">
+  <div 
+    className={`grid transition-all duration-700 ease-[0.22,1,0.36,1] ${
+      hovered === i ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+    }`}
+  >
+    <div className="overflow-hidden">
+      {/* Pink Box Content */}
+      <div className="w-full bg-premium-pink/30 p-6 rounded-xl border border-premium-pink/20">
+        <motion.div
+          animate={hovered === i ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+        >
+          <div className="flex items-center gap-4 mb-4">
+            <span className="text-white font-bold text-sm tracking-tighter">{service.id}</span>
+            <div className="h-[1px] w-12 bg-white/50" />
+            <span className="text-white/80 text-[9px] tracking-[0.4em] uppercase">{service.subtitle}</span>
+          </div>
+          
+          <h3 className="text-white text-2xl md:text-4xl font-black tracking-tighter mb-4 leading-none uppercase">
+            {service.title}
+          </h3>
+          
+          <p className="text-zinc-100 text-xs md:text-sm max-w-md tracking-wide leading-relaxed opacity-90">
+            {service.description}
+          </p>
+        </motion.div>
+      </div>
+    </div>
+  </div>
+
+  {/* Inactive Title - Yeh hamesha bottom pe rahega jab hover na ho */}
+  <AnimatePresence>
+    {hovered !== i && (
+      <motion.div
+        key="inactive-title"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="absolute inset-0 flex items-center justify-center pointer-events-none"
+      >
+        <p className="text-white/30 font-black tracking-[0.5em] uppercase rotate-90 whitespace-nowrap text-[10px] group-hover:text-premium-pink transition-colors">
+          {service.title}
+        </p>
+      </motion.div>
+    )}
+  </AnimatePresence>
+</div>
           </motion.div>
         ))}
       </div>
