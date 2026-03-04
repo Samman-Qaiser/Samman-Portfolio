@@ -6,6 +6,7 @@ import Staircase from "./Staircase";
 import { gsap } from "gsap";
 import { TypingAnimation } from "../Component/ui/typing-animation";
 import { InteractiveHoverButton } from "@/Component/ui/interactive-hover-button";
+import JasmineSVG from "./ui/Jasmine";
 
 export default function Loader({ onComplete }: { onComplete: () => void }) {
   const [isClicked, setIsClicked] = useState(false);
@@ -151,6 +152,7 @@ const handleEnter = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             className="mt-10"
+               transition={{ duration: 1 }}
           >
             <span className=" text-background text-[15px] tracking-[0.6em] uppercase font-light">
               Scroll to reveal
@@ -161,6 +163,7 @@ const handleEnter = () => {
 
       {/* LOADER CONTENT (Bottom) - Revealed as you scroll */}
       <div className="fixed inset-0 z-10 flex flex-col items-center justify-center text-center px-4">
+    
         <motion.div 
           ref={nameRef} 
           variants={containerVariants}

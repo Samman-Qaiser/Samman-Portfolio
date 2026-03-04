@@ -1,23 +1,30 @@
 "use client";
 import { motion } from "framer-motion";
-import React, { useEffect, useState, useRef } from "react";
-import useSound from "use-sound";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 
 export const MusicToggleButton = () => {
   const bars = 6;
   const [isPlaying, setIsPlaying] = useState(false);
   const [heights, setHeights] = useState(Array(bars).fill(0.15));
-  const hasAutoPlayed = useRef(false);
+  const [isReady, setIsReady] = useState(false);
 
-  const [play, { pause }] = useSound("/music.mp3", {
-    loop: true,
-    volume: 0.5,
-    format: ["mp3"],
-  });
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const hasInitialized = useRef(false);
 
-  // play ko ref mein rakh — stale closure se bachne ke liye
-  const playRef = useRef(play);
-  useEffect(() => { playRef.current = play; }, [play]);
+  // Audio initialize karo — lekin play mat karo abhi
+  useEffect(() => {
+    const audio = new Audio("/music.mp3");
+    audio.loop = true;
+    audio.volume = 0.5;
+    audioRef.current = audio;
+
+    audio.addEventListener("canplaythrough", () => setIsReady(true));
+
+    return () => {
+      audio.pause();
+      audio.src = "";
+    };
+  }, []);
 
   // Bar animation
   useEffect(() => {
@@ -32,59 +39,68 @@ export const MusicToggleButton = () => {
     return () => clearInterval(interval);
   }, [isPlaying]);
 
-  // Auto-play on FIRST interaction — mousemove se desktop pe jaldi trigger hoga
+  // Auto-play: sirf desktop pe (pointer: fine = mouse wala device)
   useEffect(() => {
+    const isMobile = window.matchMedia("(pointer: coarse)").matches;
+    if (isMobile) return; // Mobile pe autoplay bilkul nahi
+
     const tryAutoPlay = () => {
-      if (hasAutoPlayed.current) return;
-      hasAutoPlayed.current = true;
+      if (hasInitialized.current || !audioRef.current) return;
+      hasInitialized.current = true;
       cleanup();
-      playRef.current(); // Ref se call — hamesha latest function
-      setIsPlaying(true);
+
+      audioRef.current.play().then(() => {
+        setIsPlaying(true);
+      }).catch(() => {
+        // Desktop pe bhi block ho sakta hai — silently fail
+        hasInitialized.current = false;
+      });
     };
 
     const cleanup = () => {
       window.removeEventListener("mousemove", tryAutoPlay);
-      window.removeEventListener("click", tryAutoPlay);
-      window.removeEventListener("scroll", tryAutoPlay);
       window.removeEventListener("keydown", tryAutoPlay);
-      window.removeEventListener("touchstart", tryAutoPlay);
     };
 
     window.addEventListener("mousemove", tryAutoPlay);
-    window.addEventListener("click", tryAutoPlay);
-    window.addEventListener("scroll", tryAutoPlay);
     window.addEventListener("keydown", tryAutoPlay);
-    window.addEventListener("touchstart", tryAutoPlay);
-
     return cleanup;
-  }, []); // Empty deps — playRef se latest milta rahega
+  }, []);
 
-  const handleClick = (e: React.MouseEvent) => {
+  // ✅ KEY FIX: onClick directly play karo — yeh guaranteed user gesture hai
+  const handleClick = useCallback((e: React.MouseEvent | React.TouchEvent) => {
     e.stopPropagation();
+    if (!audioRef.current) return;
+
     if (isPlaying) {
-      pause();
+      audioRef.current.pause();
       setIsPlaying(false);
     } else {
-      playRef.current();
-      setIsPlaying(true);
+      // .play() returns a Promise — mobile pe zaroor await karo
+      audioRef.current.play().then(() => {
+        setIsPlaying(true);
+        hasInitialized.current = true;
+      }).catch((err) => {
+        console.warn("Audio play failed:", err);
+      });
     }
-  };
+  }, [isPlaying]);
 
   return (
     <div className="fixed bottom-12 left-1/2 -translate-x-1/2 z-[100] flex flex-col items-center gap-3">
-      {/* Click Hint — sirf tab dikhe jab play nahi ho raha */}
       {!isPlaying && (
         <motion.span
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 0.4, y: 0 }}
           className="font-monaco text-[8px] uppercase tracking-[0.4em] text-primary whitespace-nowrap"
         >
-          Click to play vibe
+          {isReady ? "Click to play vibe" : "Loading..."}
         </motion.span>
       )}
 
       <motion.div
         onClick={handleClick}
+        onTouchEnd={handleClick as any} // ✅ Mobile ke liye explicit touchEnd
         whileHover={{ scale: 1.1, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
         whileTap={{ scale: 0.95 }}
         className="bg-black/20 backdrop-blur-md border border-white/10 cursor-pointer rounded-full px-6 py-4 flex items-center gap-1.5 transition-all duration-500 shadow-2xl"
