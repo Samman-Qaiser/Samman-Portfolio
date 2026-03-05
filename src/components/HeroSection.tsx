@@ -168,7 +168,7 @@ const HeroSection = () => {
       >
         {/* Base Image (Girl) */}
         <img
-          src={isDark ? "/herogirldark.png" : "/herogirllight.jpg"}
+          src={isDark ? "/herogirldark.png" : "/herogirllightc.jpg"}
           className="h-full  w-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
           alt="Hero"
         />
@@ -188,7 +188,7 @@ const HeroSection = () => {
           >
             <div className="w-full h-[80vh] sm:h-full  relative xs:top-[55vh] sm:top-[23vh] lg:top-[11vh] flex items-end sm:items-center justify-center">
               <img
-                src={isDark ? "/sammandark.png" : "/sammanlight.png"}
+                src={isDark ? "/sammandark.png" : "/sammanlightc.png"}
                 className="h-full w-auto lg:block object-center object-contain hidden"
                 alt="Samman Reveal"
               />
