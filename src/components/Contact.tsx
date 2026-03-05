@@ -81,8 +81,8 @@ const IMAGE_SOURCES = [
     // Use transform for GPU-accelerated positioning (no top/left jitter)
     img.style.cssText = `
       position: absolute;
-      width: 180px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
       object-fit: cover;
       border-radius: 12px;
       pointer-events: none;
@@ -111,6 +111,7 @@ const IMAGE_SOURCES = [
     gsap.to(img, {
     
       y: "-=60",
+      opacity:0,
       scale: 1.1,
       duration: 0.8,
       delay: 0.2,
