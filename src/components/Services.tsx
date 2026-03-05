@@ -59,7 +59,7 @@ const services = [
 ];
 
   return (
-    <section id='services' className="pb-8 px-6 md:px-12 lg:px-20 bg-background h-100vh overflow-hidden font-sans">
+    <section id='services' className="mt-18 mb-18 px-6 md:px-12 lg:px-20 bg-background h-100vh overflow-hidden font-sans">
       {/* --- Header Section --- */}
 <div className=" mb-20">
   <motion.div

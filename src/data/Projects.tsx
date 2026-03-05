@@ -137,6 +137,26 @@ export const projects = [
     featured: true,
   },
    {
+    title: "Vasu Setu",
+    description:
+      "Developed a premium Shopify store for Kaira, a sacred artifacts store to remove negativity, with features like custom-designed banners, OTP verification at checkout, and automated abandoned cart reminders via WhatsApp. Implemented automatic free shipping on prepaid orders and integrated email workflows for order updates and promotions, ensuring a seamless and conversion-focused shopping experience.",
+    image: "/vasusetu.jpg",
+    category: "Shopify",
+    technologies: ["Shopify"],
+    liveUrl: "https://vasusetu.in/",
+    featured: true,
+  },
+   {
+    title: "Elexci",
+    description:
+      "Developed a premium Shopify store for Eexci, a store that sales smart tools, with features like custom-designed banners, OTP verification at checkout, and automated abandoned cart reminders via WhatsApp. Implemented automatic free shipping on prepaid orders and integrated email workflows for order updates and promotions, ensuring a seamless and conversion-focused shopping experience.",
+    image: "/elexci.jpg",
+    category: "Shopify",
+    technologies: ["Shopify"],
+    liveUrl: "https://www.elexci.com/",
+    featured: true,
+  },
+   {
     title: "Suriya String",
     description:
       "Developed the complete Surya String Shopify store from scratch, handling full store setup, product uploads, and payment gateway integration. Implemented low inventory alerts, Shiprocket delivery integration, automated order syncing to Google Sheets via Zapier, custom invoice generation, Google Analytics & Tag Manager setup, and automatic WhatsApp notifications for order placements.",
@@ -234,7 +254,7 @@ export const projects = [
       "Framer Motion",
       "React three fiber",
     ],
-    liveUrl: "https://game-hack-web-admin-1-0.vercel.app",
+    liveUrl: "https://byme-eight.vercel.app/",
     githubUrl: "https://github.com/Samman-Qaiser/Byme",
     featured: false,
   },

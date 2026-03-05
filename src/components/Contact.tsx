@@ -81,8 +81,8 @@ const IMAGE_SOURCES = [
     // Use transform for GPU-accelerated positioning (no top/left jitter)
     img.style.cssText = `
       position: absolute;
-      width: 80px;
-      height: 80px;
+      width: 180px;
+      height: 100px;
       object-fit: cover;
       border-radius: 12px;
       pointer-events: none;
@@ -109,7 +109,7 @@ const IMAGE_SOURCES = [
 
     // Smooth float-away and fade
     gsap.to(img, {
-      opacity: 0,
+    
       y: "-=60",
       scale: 1.1,
       duration: 0.8,

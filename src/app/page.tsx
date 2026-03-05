@@ -12,6 +12,7 @@ import Services from "../components/Services";
 import ContactReveal from "../components/Contact";
 import Footer from "../components/Footer";
 import SmoothWrapper from "@/components/SmoothWrapper";
+import TechStackSection from "@/components/Modern";
 
 
 export default function Home() {
@@ -40,9 +41,11 @@ export default function Home() {
          <HeroSection />
              <AboutSection />
              <ProjectsSection />
+               <TechStackSection />
              {/* <SkillSection /> */}
          <MusicToggleButton />
                   <Services />
+                
          <ContactReveal />
         <Footer />
        
