@@ -2,9 +2,10 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-
+import { BoxReveal } from "@/components/magicui/box-reveal";
 const ServiceSection = () => {
   const [hovered, setHovered] = useState<number | null>(0);
+      const pinkColor = "var(--premium-pink)";
 
 const services = [
   { 
@@ -58,17 +59,17 @@ const services = [
 ];
 
   return (
-    <section id='services' className="py-8 bg-background h-100vh overflow-hidden font-sans">
+    <section id='services' className="pb-8 px-6 md:px-12 lg:px-20 bg-background h-100vh overflow-hidden font-sans">
       {/* --- Header Section --- */}
-<div className="px-6 md:px-12 lg:px-20 mb-20">
+<div className=" mb-20">
   <motion.div
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: false, amount: 0.2 }} // Re-animates every time it comes into view
     transition={{ duration: 0.8 }}
-    className="flex flex-col md:flex-row md:items-end justify-between gap-10"
+    className="flex  flex-col  md:flex-row md:items-end justify-between gap-10"
   >
-    <div className="max-w-3xl">
+    <div className="max-w-3xl w-[50%]">
       <span className="text-xs uppercase tracking-[0.3em] text-premium-pink font-medium">
         03 / Services
       </span>
@@ -82,36 +83,18 @@ const services = [
     </div>
 
     {/* Main Evolving Text Section */}
-    <h2 className="text-lg md:text-xl  lg:text-[24px] font-medium  tracking-tight text-primary leading-[1.2] max-w-2xl lg:text-left">
-      {[
-        "Evolving with every brief and built for impact, my",
-        "process spans design, development, and brand",
-        "strategy—aligning vision with execution to bring",
-        "clarity and edge to every project."
-      ].map((line, i) => (
-        <div key={i} >
-          <motion.span
-            initial={{ y: "100%" }}
-            whileInView={{ y: 0 }}
-            // once: false matlab har baar scroll pe animation hogi
-            viewport={{ once: false, amount: 0.8 }} 
-            transition={{ 
-              duration: 1, 
-              delay: i * 0.1, 
-              ease: [0.16, 1, 0.3, 1] 
-            }}
-            className="block"
-          >
-            {line}
-          </motion.span>
-        </div>
-      ))}
-    </h2>
+<BoxReveal boxColor={pinkColor} duration={1.5} >
+  <h2 className="text-lg md:text-xl  lg:text-[21px]  tracking-tight text-primary leading-[1.2] max-w-2xl lg:text-left">
+    Evolving with every brief and built for impact, my process spans design, 
+    development, and brand strategy—aligning vision with execution to bring 
+    clarity and edge to every project.
+  </h2>
+</BoxReveal>
   </motion.div>
 </div>
 
       {/* --- Accordion Cards --- */}
-      <div className="flex flex-col md:flex-row  md:h-[600px] w-full max-w-[1400px] mx-auto gap-3 px-6">
+      <div className="flex flex-col md:flex-row  md:h-[600px] w-full max-w-[1400px] mx-auto gap-3">
         {services.map((service, i) => (
           <motion.div
             key={service.id}

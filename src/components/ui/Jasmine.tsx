@@ -1,437 +1,61 @@
-function JasmineSVG() {
+import { motion, Variants } from "framer-motion";
+
+export default function JasmineSVG() {
+
+  const draw: Variants = {
+    hidden: { 
+      pathLength: 0, 
+      opacity: 0,
+      fill: "rgba(255, 255, 255, 0)" 
+    },
+    visible: {
+      pathLength: 1,
+      opacity: 1,
+      fill: "rgba(255, 255, 255, 1)", 
+      transition: {
+        pathLength: { 
+          type: "spring", 
+          duration: 3, // Isay thora slow rakha hai taake drawing nazar aaye
+          bounce: 0,
+          ease: "easeInOut" 
+        },
+        opacity: { duration: 0.5 },
+        fill: {
+          delay: 2.5, // Drawing ke end pe color aaye
+          duration: 10
+        }
+      }
+    }
+  };
+
+  const pathData = 'M3674 5406 c-25 -42 -90 -146 -142 -231 -207 -334 -217 -510 -63 -1005 56 -178 61 -251 29 -381 -30 -117 -37 -114 -114 51 -79 170 -255 365 -444 490 -172 114 -194 113 -119 -5 185 -291 257 -871 129 -1039 l-70 -92 0 189 c0 386 -264 938 -482 1008 -147 46 -416 -643 -389 -995 l12 -155 -101 101 c-238 238 -599 297 -964 159 -156 -59 -205 -101 -190 -163 37 -144 392 -576 552 -670 l61 -36 -119 -64 c-291 -155 -580 -478 -580 -647 0 -157 661 -232 1005 -114 186 63 182 63 155 14 -11 -22 -26 -93 -33 -158 l-12 -118 -143 -14 c-148 -15 -293 -67 -362 -130 -22 -21 -110 -83 -195 -140 -212 -139 -308 -277 -435 -622 -66 -177 -55 -191 67 -91 247 203 625 393 956 482 276 74 265 76 470 -129 257 -256 315 -258 465 -9 l74 121 123 -35 c277 -78 634 -294 653 -396 76 -402 90 -435 125 -287 13 52 59 185 102 295 73 182 87 239 52 204 -7 -7 -52 -119 -99 -249 l-86 -235 0 200 c0 110 7 238 16 285 9 47 10 85 1 85 -18 0 -29 -52 -52 -230 l-15 -120 -14 130 c-31 273 -14 536 50 805 21 91 21 111 2 95 -14 -12 -32 -64 -40 -115 -27 -185 -65 -54 -57 199 11 344 42 427 171 465 134 40 133 50 26 -219 -51 -129 -89 -249 -84 -267 9 -39 0 -60 113 247 94 251 108 270 194 256 l63 -10 -90 -188 c-49 -104 -85 -200 -80 -213 5 -14 25 11 43 55 175 417 221 441 207 110 -5 -121 -2 -220 8 -220 18 0 22 78 16 295 l-4 145 83 0 c94 0 94 27 1 -302 -53 -186 -117 -341 -88 -213 7 31 4 55 -7 55 -17 0 -44 -105 -45 -175 -1 -87 86 4 107 113 4 17 16 55 27 82 12 28 41 137 66 243 48 209 54 216 196 217 224 1 245 77 85 302 l-119 166 11 201 c10 208 55 398 137 583 56 128 31 143 -94 58 -85 -57 -364 -419 -383 -497 l-14 -52 -74 34 c-41 19 -78 36 -82 38 -4 3 34 53 85 111 215 244 279 461 152 511 -100 39 -100 33 21 176 115 136 181 265 227 442 52 202 45 209 -83 84 -63 -62 -194 -168 -290 -236 -199 -140 -300 -237 -335 -322 -59 -141 -58 -3 0 151 11 30 65 104 119 164 306 344 337 796 89 1290 -85 168 -96 174 -154 82z m78 -206 l22 90 16 -118 c8 -66 11 -201 5 -300 -8 -138 -6 -168 10 -122 11 33 21 162 22 286 3 205 5 221 29 164 157 -385 118 -831 -95 -1100 l-40 -50 37 100 c47 129 68 236 42 220 -11 -7 -20 -20 -20 -30 0 -32 -83 -243 -92 -234 -5 4 4 61 20 126 16 65 34 177 40 248 l12 130 -41 -170 c-22 -93 -53 -215 -68 -270 l-28 -100 -4 110 -4 110 -24 -100 -25 -100 -14 200 c-8 110 -17 214 -21 230 -9 44 -18 -153 -12 -270 7 -140 -12 -107 -69 120 -87 342 -60 505 143 848 l117 199 10 -153 10 -154 22 90z m-1249 -955 c325 -341 415 -761 281 -1299 -34 -135 -68 -333 -77 -440 -15 -198 -38 -191 -46 14 -3 81 -6 85 -23 41 -11 -28 -15 -86 -8 -130 8 -53 5 -71 -7 -51 -91 151 -103 671 -18 839 81 161 68 300 -17 171 -59 -90 -110 -677 -71 -820 21 -79 21 -80 -15 -36 -76 91 -207 429 -223 575 -23 206 -38 254 -76 246 -47 -9 -40 -159 12 -263 23 -45 57 -136 75 -202 19 -66 59 -172 89 -235 68 -143 63 -143 -40 -4 -349 473 -384 925 -113 1464 143 284 135 280 277 130z m659 -159 c111 -119 278 -383 278 -442 0 -17 -181 -93 -190 -79 -2 3 -23 84 -46 181 -49 197 -107 323 -215 464 -103 135 -6 66 173 -124z m-177 69 c82 -124 208 -431 224 -545 10 -76 7 -83 -74 -141 l-85 -61 -1 181 c-2 203 -45 416 -118 582 -59 132 -40 127 54 -16z m1241 22 c-20 -35 -124 -156 -231 -269 -107 -114 -195 -216 -195 -227 0 -12 -41 -21 -91 -21 l-90 0 29 55 c38 73 127 153 325 293 89 64 188 142 219 174 71 74 79 73 34 -5z m46 -52 c-44 -123 -88 -202 -198 -355 -56 -77 -103 -142 -104 -144 -7 -15 -150 23 -150 39 0 11 88 107 195 212 107 106 213 226 234 267 50 94 60 86 23 -19z m-699 -311 c-22 -68 -43 -137 -47 -152 -4 -15 -11 -24 -16 -18 -21 20 57 312 80 303 17 -6 13 -43 -17 -133z m407 -247 l110 -35 -130 -12 c-221 -22 -504 -150 -600 -271 -29 -38 -29 -38 20 -4 247 173 740 331 740 238 0 -13 -29 -23 -65 -23 -74 0 -251 -77 -292 -127 -17 -19 -19 -33 -7 -33 12 0 27 9 34 20 16 26 137 77 236 99 96 22 92 -21 -16 -190 -143 -224 -197 -267 -305 -244 -300 64 -676 -135 -900 -477 -29 -46 43 150 88 238 18 34 85 113 150 175 110 106 148 179 93 179 -28 0 -156 -120 -156 -146 0 -10 -31 -61 -70 -113 -38 -53 -93 -144 -121 -203 l-52 -108 12 123 c70 696 621 1105 1231 914z m-2290 -104 c141 -66 297 -209 354 -324 18 -38 61 -131 95 -206 33 -76 100 -193 147 -260 119 -171 129 -191 62 -130 -32 29 -123 94 -202 145 -79 51 -150 102 -156 113 -35 55 -210 97 -210 50 0 -41 74 -88 195 -123 97 -29 189 -90 365 -246 l70 -61 -170 77 c-320 147 -504 189 -700 161 -194 -27 -458 206 -689 606 l-55 95 77 -1 c42 0 140 -22 217 -48 77 -26 144 -44 148 -40 15 16 -221 113 -299 124 -102 13 -86 33 66 82 259 84 485 79 685 -14z m2779 -66 c-18 -34 -54 -118 -80 -185 l-47 -122 -1 117 c-1 107 5 123 67 185 85 85 102 86 61 5z m-1852 -79 c-30 -91 -64 -127 -46 -48 17 71 49 137 61 125 4 -5 -2 -39 -15 -77z m-380 -94 c19 -86 -3 -140 -24 -59 -14 52 -17 166 -4 153 5 -5 17 -47 28 -94z m2080 -444 l2 -170 -60 65 c-81 90 -90 418 -14 535 l45 68 13 -164 c7 -90 14 -240 14 -334z m-165 152 l-1 -149 -58 34 c-76 44 -83 68 -41 136 34 54 90 127 98 127 2 0 3 -67 2 -148z m-346 -12 c197 -61 414 -237 602 -488 84 -111 82 -136 -6 -73 -69 49 -268 121 -330 120 -23 -1 13 -22 80 -47 175 -64 368 -184 368 -227 0 -41 -118 -54 -510 -55 l-400 -1 -163 -74 c-197 -90 -173 -90 -258 -5 -102 101 -183 137 -313 139 -301 3 237 236 602 260 200 13 205 31 9 31 -190 0 -435 -58 -562 -132 -48 -28 -92 -47 -97 -43 -14 14 127 117 262 191 66 36 98 60 70 53 -107 -28 -218 -88 -295 -157 -109 -98 -115 -91 -45 48 187 370 621 573 986 460z m-1880 -113 c36 -19 53 -37 39 -42 -14 -5 -55 10 -90 33 -78 49 -40 56 51 9z m64 -242 c165 -58 478 -204 465 -217 -5 -4 -45 4 -89 20 -138 48 -380 78 -551 67 -168 -10 -495 -87 -495 -115 0 -9 61 3 135 27 199 63 654 62 855 -2 211 -68 206 -76 -40 -68 -126 4 -242 -2 -261 -12 -25 -14 7 -17 106 -10 143 10 432 -38 456 -76 15 -24 -10 -24 -163 3 -181 31 -292 -9 -450 -164 -248 -244 -745 -315 -1154 -165 -113 41 -105 71 51 195 136 109 152 142 32 67 -135 -84 -135 -84 -117 -53 276 466 761 666 1220 503z m1040 -432 c245 -116 240 -253 -21 -523 -160 -166 -196 -222 -299 -460 -79 -183 -204 -391 -243 -404 -30 -10 -46 55 -61 254 -11 142 -16 160 -30 110 -20 -68 -3 -279 26 -334 11 -21 12 -36 1 -36 -10 0 -29 43 -43 95 -27 98 -60 156 -60 104 0 -16 8 -58 19 -94 55 -192 -323 236 -421 478 -165 403 100 877 461 827 101 -14 117 -26 82 -61 -10 -10 -33 -55 -50 -99 -30 -78 -30 -79 4 -30 134 190 189 205 106 30 -55 -118 -94 -281 -62 -261 9 6 21 36 28 69 16 81 132 322 154 322 25 0 24 -2 -11 -87 -16 -39 -30 -97 -29 -127 0 -42 15 -20 55 84 76 194 193 237 394 143z m415 -208 c-42 -153 -41 -448 2 -562 32 -86 28 -135 -8 -112 -11 6 -19 2 -19 -9 0 -11 9 -25 20 -32 11 -7 20 -26 20 -42 0 -19 -9 -25 -25 -15 -19 11 -18 6 1 -18 17 -20 23 -63 16 -118 -5 -48 -10 -99 -11 -114 0 -15 -35 17 -78 70 -96 122 -275 286 -392 360 -113 72 -113 77 18 206 97 95 111 104 123 70 42 -119 135 -290 199 -365 109 -127 105 -89 -8 79 -55 81 -117 191 -139 246 l-38 99 57 90 c31 49 57 115 57 145 0 30 8 60 18 66 10 6 13 -62 7 -160 -12 -187 26 -374 96 -480 50 -75 49 -46 0 85 -54 140 -86 356 -71 469 13 89 69 140 173 155 7 1 -1 -50 -18 -113z m-1625 -450 c0 -14 6 -45 13 -70 9 -35 3 -45 -26 -45 -21 0 -100 -37 -177 -82 -77 -45 -197 -105 -267 -133 -188 -75 -396 -220 -548 -382 l-135 -143 51 115 c117 264 211 383 395 504 68 44 157 109 198 144 114 97 495 168 496 92z m1142 -178 c205 -147 478 -430 478 -494 0 -15 -61 29 -135 100 -140 131 -302 248 -431 309 -80 38 -85 50 -53 109 27 52 38 50 141 -24z m-1062 -62 c26 -58 50 -111 54 -117 4 -7 -54 -19 -128 -26 -75 -7 -223 -43 -329 -78 l-193 -65 36 51 c82 113 402 340 480 340 19 0 51 -42 80 -105z m978 -59 c235 -142 607 -457 577 -488 -7 -7 -52 21 -99 61 -106 92 -411 242 -550 272 l-103 22 33 88 c38 102 44 104 142 45z m-1582 -173 c-45 -68 -97 -114 -172 -153 -59 -31 -175 -105 -258 -165 -82 -59 -154 -104 -159 -99 -45 45 547 514 648 514 3 0 -24 -44 -59 -97z'
+
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="10 5 285 405"
-      width="460"
-      height="460"
-      aria-label="Jasmine Flower Branch"
-    >
-      <defs>
-        {/* Leaf gradient - dark green with highlight */}
-        <linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#3d7535" />
-          <stop offset="50%" stopColor="#2a5e28" />
-          <stop offset="100%" stopColor="#1c4420" />
-        </linearGradient>
-        <linearGradient id="lg2" x1="100%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#3d7535" />
-          <stop offset="50%" stopColor="#2a5e28" />
-          <stop offset="100%" stopColor="#1c4420" />
-        </linearGradient>
-        <linearGradient id="lg3" x1="0%" y1="100%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#2a5e28" />
-          <stop offset="100%" stopColor="#3d7535" />
-        </linearGradient>
-        <linearGradient id="lg4" x1="100%" y1="100%" x2="0%" y2="0%">
-          <stop offset="0%" stopColor="#2a5e28" />
-          <stop offset="100%" stopColor="#3d7535" />
-        </linearGradient>
-
-        {/* Petal gradient - creamy white with soft green edge */}
-        <radialGradient id="pg1" cx="50%" cy="70%" r="65%">
-          <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="75%" stopColor="#f5f8f0" />
-          <stop offset="100%" stopColor="#dde8d0" />
-        </radialGradient>
-        <radialGradient id="pg2" cx="50%" cy="70%" r="65%">
-          <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="75%" stopColor="#f5f8f0" />
-          <stop offset="100%" stopColor="#d8e4cc" />
-        </radialGradient>
-
-        {/* Petal shaded (back petals) */}
-        <radialGradient id="pgShade" cx="50%" cy="60%" r="65%">
-          <stop offset="0%" stopColor="#f0f5ea" />
-          <stop offset="70%" stopColor="#e0eacc" />
-          <stop offset="100%" stopColor="#c8d8b8" />
-        </radialGradient>
-
-        {/* Bud green gradient */}
-        <linearGradient id="budGreen" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#5a8a44" />
-          <stop offset="100%" stopColor="#2a5e28" />
-        </linearGradient>
-
-        {/* Stamen center */}
-        <radialGradient id="stamenCenter" cx="50%" cy="45%" r="55%">
-          <stop offset="0%" stopColor="#f5d020" />
-          <stop offset="60%" stopColor="#e8b820" />
-          <stop offset="100%" stopColor="#c89010" />
-        </radialGradient>
-
-        {/* Stem gradient */}
-        <linearGradient id="stemGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#4a7038" />
-          <stop offset="50%" stopColor="#567a40" />
-          <stop offset="100%" stopColor="#3a5e2c" />
-        </linearGradient>
-      </defs>
-
-      {/* ═══════════════════════════════
-          STEM & BRANCHES
-         ═══════════════════════════════ */}
-      {/* Main stem */}
-      <path
-        d="M 152 405 C 151 375 150 340 151 310 C 152 280 151 250 150 220 C 149 190 149 165 148 140 C 147 115 146 90 143 65"
-        stroke="#567a40" strokeWidth="5.5" fill="none" strokeLinecap="round"
-      />
-      {/* Upper left branch (to left flower) */}
-      <path
-        d="M 146 120 C 138 108 128 96 118 85 C 110 76 102 70 96 62"
-        stroke="#567a40" strokeWidth="4" fill="none" strokeLinecap="round"
-      />
-      {/* Upper right branch (to right-top flower) */}
-      <path
-        d="M 148 105 C 158 94 168 83 178 73 C 186 65 193 59 200 53"
-        stroke="#567a40" strokeWidth="4" fill="none" strokeLinecap="round"
-      />
-      {/* Right side branch (to right flower) */}
-      <path
-        d="M 151 220 C 165 215 182 210 198 207 C 213 204 225 202 237 200"
-        stroke="#567a40" strokeWidth="3.5" fill="none" strokeLinecap="round"
-      />
-      {/* Small bud branch top */}
-      <path
-        d="M 143 68 C 137 60 132 54 128 48"
-        stroke="#567a40" strokeWidth="3" fill="none" strokeLinecap="round"
-      />
-      {/* Small branch for bud near right */}
-      <path
-        d="M 198 207 C 206 198 212 190 216 182"
-        stroke="#4a7038" strokeWidth="2.5" fill="none" strokeLinecap="round"
-      />
-
-      {/* ═══════════════════════════════
-          LARGE BOTTOM LEAVES (behind)
-         ═══════════════════════════════ */}
-      {/* Bottom-left large leaf */}
-      <g transform="translate(150,330)">
-        <path
-          d="M 2,0 C -8,-8 -35,-18 -65,-22 C -90,-25 -108,-18 -108,-8 C -108,2 -90,14 -65,18 C -38,22 -10,16 2,0 Z"
-          fill="url(#lg1)"
-        />
-        {/* Midrib */}
-        <path d="M 2,0 C -25,2 -70,0 -108,-8" stroke="#1c4420" strokeWidth="1.3" fill="none" opacity="0.6"/>
-        {/* Side veins */}
-        <path d="M -25,-1 C -28,-12 -32,-20 -38,-22" stroke="#1c4420" strokeWidth="0.8" fill="none" opacity="0.4"/>
-        <path d="M -50,0 C -53,-12 -58,-20 -65,-22" stroke="#1c4420" strokeWidth="0.8" fill="none" opacity="0.4"/>
-        <path d="M -75,0 C -78,-10 -83,-16 -88,-18" stroke="#1c4420" strokeWidth="0.8" fill="none" opacity="0.4"/>
-        <path d="M -25,2 C -27,12 -30,18 -34,20" stroke="#1c4420" strokeWidth="0.8" fill="none" opacity="0.4"/>
-        <path d="M -50,2 C -52,12 -56,18 -62,19" stroke="#1c4420" strokeWidth="0.8" fill="none" opacity="0.4"/>
-        {/* Highlight */}
-        <path d="M -10,-5 C -30,-14 -58,-18 -80,-16" stroke="#4a8040" strokeWidth="1.2" fill="none" opacity="0.35"/>
-      </g>
-
-      {/* Bottom-right large leaf */}
-      <g transform="translate(152,345)">
-        <path
-          d="M -2,0 C 8,-8 35,-16 65,-20 C 90,-23 110,-16 110,-6 C 110,4 90,16 65,20 C 38,24 10,18 -2,0 Z"
-          fill="url(#lg2)"
-        />
-        <path d="M -2,0 C 25,2 70,2 110,-6" stroke="#1c4420" strokeWidth="1.3" fill="none" opacity="0.6"/>
-        <path d="M 25,-1 C 28,-12 32,-18 38,-20" stroke="#1c4420" strokeWidth="0.8" fill="none" opacity="0.4"/>
-        <path d="M 50,0 C 53,-12 58,-18 65,-20" stroke="#1c4420" strokeWidth="0.8" fill="none" opacity="0.4"/>
-        <path d="M 78,0 C 80,-10 84,-15 90,-16" stroke="#1c4420" strokeWidth="0.8" fill="none" opacity="0.4"/>
-        <path d="M 25,2 C 27,12 30,18 34,20" stroke="#1c4420" strokeWidth="0.8" fill="none" opacity="0.4"/>
-        <path d="M 52,2 C 54,12 58,18 64,19" stroke="#1c4420" strokeWidth="0.8" fill="none" opacity="0.4"/>
-        <path d="M 10,-4 C 32,-13 60,-17 82,-15" stroke="#4a8040" strokeWidth="1.2" fill="none" opacity="0.35"/>
-      </g>
-
-      {/* ═══════════════════════════════
-          MIDDLE LEAVES
-         ═══════════════════════════════ */}
-      {/* Middle-left leaf */}
-      <g transform="translate(149,242)">
-        <path
-          d="M 2,0 C -5,-10 -30,-24 -62,-32 C -85,-37 -105,-30 -105,-18 C -105,-8 -85,6 -62,10 C -35,15 -8,10 2,0 Z"
-          fill="url(#lg3)"
-        />
-        <path d="M 2,0 C -22,0 -65,-5 -105,-18" stroke="#1c4420" strokeWidth="1.3" fill="none" opacity="0.6"/>
-        <path d="M -20,-5 C -24,-18 -28,-26 -35,-30" stroke="#1c4420" strokeWidth="0.8" fill="none" opacity="0.4"/>
-        <path d="M -48,-8 C -52,-20 -56,-28 -62,-32" stroke="#1c4420" strokeWidth="0.8" fill="none" opacity="0.4"/>
-        <path d="M -75,-10 C -78,-20 -83,-26 -88,-28" stroke="#1c4420" strokeWidth="0.8" fill="none" opacity="0.4"/>
-        <path d="M -20,2 C -22,10 -24,16 -28,18" stroke="#1c4420" strokeWidth="0.8" fill="none" opacity="0.4"/>
-        <path d="M -48,3 C -50,10 -52,14 -56,15" stroke="#1c4420" strokeWidth="0.8" fill="none" opacity="0.4"/>
-        <path d="M -8,-3 C -28,-12 -55,-18 -78,-18" stroke="#4a8040" strokeWidth="1.2" fill="none" opacity="0.35"/>
-      </g>
-
-      {/* Middle-right leaf */}
-      <g transform="translate(151,258)">
-        <path
-          d="M -2,0 C 5,-8 30,-20 62,-28 C 85,-33 106,-26 106,-14 C 106,-4 85,10 62,14 C 35,18 8,12 -2,0 Z"
-          fill="url(#lg4)"
-        />
-        <path d="M -2,0 C 22,0 65,-2 106,-14" stroke="#1c4420" strokeWidth="1.3" fill="none" opacity="0.6"/>
-        <path d="M 20,-4 C 23,-16 27,-24 34,-28" stroke="#1c4420" strokeWidth="0.8" fill="none" opacity="0.4"/>
-        <path d="M 46,-7 C 50,-18 54,-25 60,-28" stroke="#1c4420" strokeWidth="0.8" fill="none" opacity="0.4"/>
-        <path d="M 72,-9 C 75,-18 79,-23 84,-24" stroke="#1c4420" strokeWidth="0.8" fill="none" opacity="0.4"/>
-        <path d="M 20,2 C 22,10 24,15 27,16" stroke="#1c4420" strokeWidth="0.8" fill="none" opacity="0.4"/>
-        <path d="M 46,3 C 48,10 50,14 53,15" stroke="#1c4420" strokeWidth="0.8" fill="none" opacity="0.4"/>
-        <path d="M 8,-2 C 28,-10 56,-16 80,-15" stroke="#4a8040" strokeWidth="1.2" fill="none" opacity="0.35"/>
-      </g>
-
-      {/* ═══════════════════════════════
-          UPPER LEAVES (near flowers)
-         ═══════════════════════════════ */}
-      {/* Upper-left leaf */}
-      <g transform="translate(147,158) rotate(-15)">
-        <path
-          d="M 2,0 C -4,-8 -22,-18 -48,-24 C -68,-28 -84,-22 -84,-12 C -84,-4 -68,6 -48,10 C -26,14 -5,8 2,0 Z"
-          fill="url(#lg1)"
-        />
-        <path d="M 2,0 C -16,0 -50,-4 -84,-12" stroke="#1c4420" strokeWidth="1.1" fill="none" opacity="0.55"/>
-        <path d="M -16,-4 C -18,-14 -22,-20 -27,-22" stroke="#1c4420" strokeWidth="0.7" fill="none" opacity="0.4"/>
-        <path d="M -38,-6 C -40,-15 -43,-20 -48,-24" stroke="#1c4420" strokeWidth="0.7" fill="none" opacity="0.4"/>
-        <path d="M -58,-8 C -60,-16 -63,-20 -68,-22" stroke="#1c4420" strokeWidth="0.7" fill="none" opacity="0.4"/>
-        <path d="M -16,2 C -17,8 -20,12 -23,14" stroke="#1c4420" strokeWidth="0.7" fill="none" opacity="0.4"/>
-        <path d="M -40,3 C -41,9 -44,12 -47,13" stroke="#1c4420" strokeWidth="0.7" fill="none" opacity="0.4"/>
-      </g>
-
-      {/* Upper-right leaf */}
-      <g transform="translate(149,170) rotate(20)">
-        <path
-          d="M -2,0 C 4,-8 22,-18 50,-22 C 70,-25 85,-18 85,-8 C 85,0 70,10 50,14 C 28,18 5,10 -2,0 Z"
-          fill="url(#lg2)"
-        />
-        <path d="M -2,0 C 18,0 55,-2 85,-8" stroke="#1c4420" strokeWidth="1.1" fill="none" opacity="0.55"/>
-        <path d="M 18,-3 C 20,-12 23,-18 28,-20" stroke="#1c4420" strokeWidth="0.7" fill="none" opacity="0.4"/>
-        <path d="M 38,-5 C 40,-14 43,-19 48,-22" stroke="#1c4420" strokeWidth="0.7" fill="none" opacity="0.4"/>
-        <path d="M 58,-6 C 60,-14 63,-18 68,-20" stroke="#1c4420" strokeWidth="0.7" fill="none" opacity="0.4"/>
-        <path d="M 18,2 C 19,8 20,12 22,13" stroke="#1c4420" strokeWidth="0.7" fill="none" opacity="0.4"/>
-        <path d="M 40,3 C 41,9 43,12 46,13" stroke="#1c4420" strokeWidth="0.7" fill="none" opacity="0.4"/>
-      </g>
-
-      {/* Small leaf near top-right flower */}
-      <g transform="translate(200,55) rotate(30)">
-        <path
-          d="M 0,2 C -4,-5 -15,-14 -32,-18 C -45,-20 -55,-14 -55,-7 C -55,-1 -45,6 -32,9 C -18,12 -4,8 0,2 Z"
-          fill="url(#lg3)"
-        />
-        <path d="M 0,2 C -12,1 -35,-2 -55,-7" stroke="#1c4420" strokeWidth="0.9" fill="none" opacity="0.5"/>
-        <path d="M -14,-2 C -16,-9 -18,-14 -22,-17" stroke="#1c4420" strokeWidth="0.6" fill="none" opacity="0.4"/>
-        <path d="M -32,0 C -33,-8 -36,-12 -40,-15" stroke="#1c4420" strokeWidth="0.6" fill="none" opacity="0.4"/>
-      </g>
-
-      {/* Small leaf near top-left flower */}
-      <g transform="translate(96,65) rotate(-25)">
-        <path
-          d="M 0,2 C 4,-6 16,-14 34,-18 C 47,-20 56,-14 56,-7 C 56,-1 47,6 34,9 C 20,12 5,8 0,2 Z"
-          fill="url(#lg4)"
-        />
-        <path d="M 0,2 C 14,1 36,-2 56,-7" stroke="#1c4420" strokeWidth="0.9" fill="none" opacity="0.5"/>
-        <path d="M 14,-2 C 16,-9 18,-14 22,-17" stroke="#1c4420" strokeWidth="0.6" fill="none" opacity="0.4"/>
-        <path d="M 32,0 C 33,-8 35,-12 40,-15" stroke="#1c4420" strokeWidth="0.6" fill="none" opacity="0.4"/>
-      </g>
-
-      {/* ═══════════════════════════════
-          BUDS
-         ═══════════════════════════════ */}
-      {/* Bud top-left (small, mostly green) */}
-      <g transform="translate(128,48)">
-        <path d="M -4,8 C -7,-2 -6,-16 0,-24 C 6,-16 7,-2 4,8 Z" fill="#4a7a3c"/>
-        <path d="M 0,-22 C -5,-16 -6,-4 -4,6 Q0,4 4,6 C 6,-4 5,-16 0,-22 Z" fill="#f5f5ec"/>
-        <path d="M 0,-22 C -2,-16 -2,-4 -1,4 Q0,3 1,4 C 2,-4 2,-16 0,-22 Z" fill="white" opacity="0.5"/>
-        {/* Small sepals */}
-        <path d="M -4,6 C -10,2 -12,-6 -8,-12" stroke="#4a7a3c" strokeWidth="1.5" fill="none"/>
-        <path d="M 4,6 C 10,2 12,-6 8,-12" stroke="#4a7a3c" strokeWidth="1.5" fill="none"/>
-      </g>
-
-      {/* Bud cluster near top (small buds group) */}
-      <g transform="translate(143,66)">
-        {/* Green sepal base */}
-        <path d="M -3,10 C -8,4 -8,-8 -2,-18 C 2,-10 4,0 2,10 Z" fill="#4a7a3c"/>
-        <path d="M -2,-16 C -6,-10 -7,2 -5,8 Q-2,6 2,8 C 4,2 3,-10 -2,-16 Z" fill="#f0f5e8"/>
-        <path d="M -2,-16 C -3,-10 -3,0 -2,6 Q-1,5 0,6 C 1,0 1,-10 -2,-16 Z" fill="white" opacity="0.5"/>
-        <path d="M -5,8 C -10,4 -12,-4 -8,-12" stroke="#4a7a3c" strokeWidth="1.2" fill="none"/>
-        <path d="M 2,8 C 7,4 9,-4 6,-12" stroke="#4a7a3c" strokeWidth="1.2" fill="none"/>
-      </g>
-
-      {/* Small bud near right flower */}
-      <g transform="translate(216,182)">
-        <path d="M -3,8 C -7,2 -7,-8 -1,-16 C 3,-8 4,0 2,8 Z" fill="#4a7a3c"/>
-        <path d="M -1,-14 C -5,-8 -5,2 -3,7 Q0,5 2,7 C 4,2 3,-8 -1,-14 Z" fill="#f5f5ec"/>
-        <path d="M -3,6 C -8,2 -9,-5 -6,-11" stroke="#4a7a3c" strokeWidth="1.2" fill="none"/>
-        <path d="M 2,6 C 7,2 8,-5 5,-11" stroke="#4a7a3c" strokeWidth="1.2" fill="none"/>
-      </g>
-
-      {/* White open small bud right */}
-      <g transform="translate(238,200)">
-        {/* Sepals */}
-        <path d="M -5,10 C -10,4 -10,-8 -3,-20 C 1,-10 3,-2 1,10 Z" fill="#5a8a44"/>
-        <path d="M 5,10 C 10,4 10,-8 3,-20 C -1,-10 -3,-2 -1,10 Z" fill="#4a7a3c"/>
-        {/* Petals */}
-        <path d="M 0,-18 C -12,-12 -14,0 -4,8 Q0,10 4,8 C 14,0 12,-12 0,-18 Z" fill="#f8f8f2"/>
-        <path d="M 0,-18 C -4,-12 -5,0 -1,6 Q0,7 1,6 C 5,0 4,-12 0,-18 Z" fill="white" opacity="0.6"/>
-        {/* Tiny stamen hint */}
-        <circle cx="0" cy="2" r="3" fill="#f0c030" opacity="0.7"/>
-      </g>
-
-      {/* ═══════════════════════════════
-          FLOWER 1 — Back flower (right-top)
-          Center: ~(200, 73)
-         ═══════════════════════════════ */}
-      <g transform="translate(200,73)">
-        {/* Back petals (slightly shaded) */}
-        {/* Petal 1 - upper left */}
-        <path
-          d="M 0,6 C -18,4 -38,-12 -36,-38 C -34,-52 -22,-58 -10,-52 C -4,-48 0,-40 0,6 Z"
-          fill="url(#pgShade)"
-        />
-        {/* Petal 2 - upper right */}
-        <path
-          d="M 0,6 C 18,4 38,-12 36,-38 C 34,-52 22,-58 10,-52 C 4,-48 0,-40 0,6 Z"
-          fill="url(#pgShade)"
-        />
-        {/* Petal 3 - right */}
-        <path
-          d="M 0,6 C 6,-8 30,-14 52,-2 C 62,6 62,18 52,24 C 40,30 18,22 0,6 Z"
-          fill="url(#pgShade)"
-        />
-
-        {/* Front petals (white) */}
-        {/* Petal 4 - left */}
-        <path
-          d="M 0,6 C -6,-8 -30,-14 -52,-2 C -62,6 -62,18 -52,24 C -40,30 -18,22 0,6 Z"
-          fill="url(#pg1)"
-        />
-        {/* Petal 5 - lower */}
-        <path
-          d="M 0,6 C -16,8 -28,28 -18,48 C -10,62 6,64 14,52 C 22,38 16,18 0,6 Z"
-          fill="url(#pg1)"
-        />
-        {/* Petal 6 - lower-right */}
-        <path
-          d="M 0,6 C 16,8 30,28 22,50 C 16,64 2,66 -6,56 C -16,42 -10,18 0,6 Z"
-          fill="url(#pg1)"
-        />
-
-        {/* Stamen cluster */}
-        <circle cx="0" cy="8" r="13" fill="#e8d060" opacity="0.25"/>
-        {/* Individual stamens */}
-        {[
-          [0,-8],[5,-6],[8,-2],[8,4],[5,8],
-          [0,10],[-5,8],[-8,4],[-8,-2],[-5,-6],
-          [3,-4],[-3,-4],[3,3],[-3,3]
-        ].map(([x,y], i) => (
-          <g key={i}>
-            <line x1={x*0.4} y1={y*0.4} x2={x} y2={y} stroke="#d4a020" strokeWidth="0.8" opacity="0.7"/>
-            <circle cx={x} cy={y} r="1.8" fill="#f0c030"/>
-          </g>
-        ))}
-        <circle cx="0" cy="2" r="5" fill="#e8b820" opacity="0.6"/>
-      </g>
-
-      {/* ═══════════════════════════════
-          FLOWER 2 — Front main flower (left)
-          Center: ~(115, 108)
-         ═══════════════════════════════ */}
-      <g transform="translate(115,108)">
-        {/* Back petals */}
-        {/* Petal upper-right */}
-        <path
-          d="M 0,6 C 18,4 40,-14 38,-42 C 36,-56 24,-62 12,-56 C 4,-50 0,-38 0,6 Z"
-          fill="url(#pgShade)"
-        />
-        {/* Petal upper-left */}
-        <path
-          d="M 0,6 C -18,4 -40,-14 -38,-42 C -36,-56 -24,-62 -12,-56 C -4,-50 0,-38 0,6 Z"
-          fill="url(#pgShade)"
-        />
-        {/* Petal right-upper */}
-        <path
-          d="M 0,6 C 8,-10 34,-16 56,-4 C 66,4 66,18 54,24 C 42,30 18,22 0,6 Z"
-          fill="url(#pgShade)"
-        />
-
-        {/* Front petals */}
-        {/* Petal left */}
-        <path
-          d="M 0,6 C -8,-10 -34,-16 -56,-4 C -66,4 -66,18 -54,24 C -42,30 -18,22 0,6 Z"
-          fill="url(#pg1)"
-        />
-        {/* Petal lower-left */}
-        <path
-          d="M 0,6 C -18,10 -34,32 -24,54 C -16,68 0,72 10,60 C 20,46 14,22 0,6 Z"
-          fill="url(#pg1)"
-        />
-        {/* Petal lower-right */}
-        <path
-          d="M 0,6 C 18,10 34,32 24,54 C 16,68 0,72 -10,60 C -20,46 -14,22 0,6 Z"
-          fill="url(#pg1)"
-        />
-        {/* Petal lower */}
-        <path
-          d="M 0,6 C -8,20 -10,46 2,60 C 10,68 20,66 26,54 C 32,38 20,16 0,6 Z"
-          fill="url(#pg2)"
-        />
-
-        {/* Green sepal base hints */}
-        <path d="M -10,12 C -14,20 -12,30 -6,36" stroke="#5a8a44" strokeWidth="2" fill="none" opacity="0.5"/>
-        <path d="M 10,12 C 14,20 12,30 6,36" stroke="#5a8a44" strokeWidth="2" fill="none" opacity="0.5"/>
-
-        {/* Stamen cluster */}
-        <circle cx="0" cy="8" r="15" fill="#d4a020" opacity="0.15"/>
-        {[
-          [0,-10],[6,-8],[10,-3],[10,4],[7,9],
-          [2,12],[-4,12],[-9,8],[-11,3],[-10,-4],
-          [-6,-8],[4,-5],[-4,-5],[5,4],[-5,4],
-          [0,4],[3,-2],[-3,-2]
-        ].map(([x,y], i) => (
-          <g key={i}>
-            <line x1={x*0.3} y1={y*0.3} x2={x} y2={y} stroke="#c09010" strokeWidth="0.9" opacity="0.65"/>
-            <circle cx={x} cy={y} r="2" fill="#f0c832"/>
-            <circle cx={x} cy={y} r="0.8" fill="#e8b020"/>
-          </g>
-        ))}
-        <circle cx="0" cy="2" r="6" fill="#e0c020" opacity="0.5"/>
-      </g>
-
-      {/* ═══════════════════════════════
-          FLOWER 3 — Right-side flower (smaller)
-          Center: ~(237, 205) — but we'll shift it
-         ═══════════════════════════════ */}
-      <g transform="translate(255,208) scale(0.82)">
-        {/* Back petals */}
-        <path
-          d="M 0,6 C 18,4 40,-14 38,-42 C 36,-56 24,-62 12,-56 C 4,-50 0,-38 0,6 Z"
-          fill="url(#pgShade)"
-        />
-        <path
-          d="M 0,6 C -18,4 -40,-14 -38,-42 C -36,-56 -24,-62 -12,-56 C -4,-50 0,-38 0,6 Z"
-          fill="url(#pgShade)"
-        />
-        <path
-          d="M 0,6 C 8,-10 34,-16 56,-4 C 66,4 66,18 54,24 C 42,30 18,22 0,6 Z"
-          fill="url(#pgShade)"
-        />
-
-        {/* Front petals */}
-        <path
-          d="M 0,6 C -8,-10 -34,-16 -56,-4 C -66,4 -66,18 -54,24 C -42,30 -18,22 0,6 Z"
-          fill="url(#pg1)"
-        />
-        <path
-          d="M 0,6 C -18,10 -34,32 -24,54 C -16,68 0,72 10,60 C 20,46 14,22 0,6 Z"
-          fill="url(#pg1)"
-        />
-        <path
-          d="M 0,6 C 18,10 34,32 24,54 C 16,68 0,72 -10,60 C -20,46 -14,22 0,6 Z"
-          fill="url(#pg1)"
-        />
-
-        {/* Stamens */}
-        {[
-          [0,-9],[6,-7],[9,-2],[9,4],[6,8],
-          [1,11],[-5,10],[-9,6],[-10,1],[-8,-5],
-          [-4,-8],[3,-4],[4,4],[-4,4],[0,3]
-        ].map(([x,y], i) => (
-          <g key={i}>
-            <line x1={x*0.3} y1={y*0.3} x2={x} y2={y} stroke="#c09010" strokeWidth="0.8" opacity="0.65"/>
-            <circle cx={x} cy={y} r="1.8" fill="#f0c832"/>
-          </g>
-        ))}
-        <circle cx="0" cy="2" r="5.5" fill="#e2c020" opacity="0.45"/>
-      </g>
-    </svg>)}
-    export default JasmineSVG
+    <div className="flex items-center justify-center p-10 "> {/* Black bg taake white nazar aaye */}
+      <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        width="400" 
+        height="400" 
+        viewBox="0 0 3630 3550" // ViewBox ko scale ke mutabiq adjust kiya
+        className="overflow-visible"
+      > 
+        <motion.g 
+          transform="translate(0,3550) scale(1,-1)" // Scale adjust kiya stroke width bachane ke liye
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        > 
+          <motion.path 
+            variants={draw} 
+            custom={1}
+            d={pathData}
+            stroke="#ffffff" // Line ka color
+            strokeWidth="15" // Path length ke hisab se width thori barhai
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </motion.g> 
+      </svg>
+    </div>
+  );
+}
