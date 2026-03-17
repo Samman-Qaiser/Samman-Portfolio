@@ -201,6 +201,24 @@ export const projects = [
     githubUrl: "#",
     featured: true,
   },
+   {
+    title: "Esbo Global",
+    description:
+      "I developed a high-end, futuristic platform for ESBO Global (USA), handling everything from branding to full-stack development. Built with Elementor and Custom JS/CSS, the site features a modern Bento Grid layout, a custom Dark Mode switcher, and seamless WooCommerce/Stripe integration. I personally designed all logos and visual assets, ensuring a premium aesthetic without compromising performance—achieving elite speed scores of 94 on Mobile and 96 on Desktop.",
+    image: "/esboglobal.png",
+    category: "WordPress",
+    technologies: [
+      "Elementor",
+      "HTML",
+      "CSS",
+      "GSAP",
+      
+ 
+    ],
+    liveUrl: "https://esboglobal.com/",
+    githubUrl: "#",
+    featured: true,
+  },
   {
     title: "Ecommerce",
     description:
