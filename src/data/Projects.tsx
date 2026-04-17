@@ -17,6 +17,23 @@ export const projects = [
     featured: true,
   },
     {
+    title: "Youtube Stock Management System",
+    description:
+      "Designed a specialized ERP solution for digital asset traders to manage purchased, sold, and terminated YouTube channels.Integrated interactive financial charts to track profit/loss margins, monthly growth, and inventory health in real-time.Developed a dedicated module to log and monitor 'Hacked or 'Terminated' status, providing a complete audit trail for high-value digital assets.",
+    image: "/youtubeinventory.png",
+    category: "MERN",
+    technologies: [
+      "React",
+      "Javascrript",
+      "Tailwind CSS",
+      "Firebase",
+      "Tanstack Query",
+      "Redux","Resend" ,"Cron Job"
+    ],
+    liveUrl: "https://youtube-inventory-system.vercel.app/",
+    featured: true,
+  },
+    {
     title: "Admin Pannel of Doritaaga",
     description:
       "Developed a powerful industry-level admin panel for Doritaaga, enabling complete control over products, orders, users, and analytics with a modern, intuitive interface.",
@@ -107,7 +124,7 @@ export const projects = [
     image: "/hussain.png",
     category: "React",
     technologies: [
-      "React",
+      "NEXT.JS",
       "Tailwind CSS",
     
     ],
