@@ -13,6 +13,7 @@ import ContactReveal from "../components/Contact";
 import Footer from "../components/Footer";
 import SmoothWrapper from "@/components/SmoothWrapper";
 import TechStackSection from "@/components/Modern";
+import ExperienceTimeline from "@/components/Experience";
 
 
 export default function Home() {
@@ -45,7 +46,7 @@ export default function Home() {
              {/* <SkillSection /> */}
          <MusicToggleButton />
                   <Services />
-                
+                <ExperienceTimeline />
          <ContactReveal />
         <Footer />
        

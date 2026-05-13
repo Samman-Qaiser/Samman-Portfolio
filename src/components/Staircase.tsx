@@ -39,10 +39,8 @@ useEffect(() => {
         {bars.map((_, i) => (
           <div
             key={`top-${i}`}
-            className="stair-bar-top w-[10%] h-full"
-            style={{ 
-              backgroundColor:  '#F0A6CA' 
-            }}
+            className="stair-bar-top w-[10%] h-full bg-premium-pink"
+           
           />
         ))}
       </div>
@@ -52,10 +50,8 @@ useEffect(() => {
         {bars.map((_, i) => (
           <div
             key={`bottom-${i}`}
-            className="stair-bar-bottom w-[10%] h-full "
-            style={{ 
-              backgroundColor:  '#F0A6CA' 
-            }}
+            className="stair-bar-bottom w-[10%] h-full bg-premium-pink"
+           
           />
         ))}
       </div>

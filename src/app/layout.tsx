@@ -6,12 +6,11 @@ import { MusicProvider } from "../components/MusicContext";
 export const metadata: Metadata = {
   title: "Samman Qaiser | Full-Stack Engineer",
   description: "Software Engineer with 4+ years of experience in MERN stack, Next.js, and Deep Learning. Bridging the gap between creative UI/UX and intelligent automation.",
-  metadataBase: new URL('https://samman-portfolio.vercel.app/'), // Absolute URLs ke liye zaroori hai
+  metadataBase: new URL('https://samman-portfolio.vercel.app/'),
   icons: {
     icon: '/favicon.ico',
     apple: '/apple-touch-icon.png',
   },
-  // Sab properties openGraph object ke andar honi chahiye
   openGraph: {
     title: 'Samman Qaiser | Full-Stack Mastery & AI Evolution',
     description: 'Expertise in MERN, Next.js, and Deep Learning automation.',
@@ -20,20 +19,36 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/og-image.jpg', // metadataBase ki wajah se ab sirf path kaafi hai
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Samman Qaiser Portfolio Preview',
       },
     ],
   },
- 
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body>
+    /* suppressHydrationWarning yahan zaroori hai kyunke hum <html> ki class script se change kar rahe hain */
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Yeh script page content load hone se pehle theme apply kar degi (No White Flash) */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  document.documentElement.classList.add('dark')
+                } else {
+                  document.documentElement.classList.remove('dark')
+                }
+              } catch (_) {}
+            `,
+          }}
+        />
+      </head>
+      <body className="antialiased transition-colors duration-300">
         <MusicProvider>
           {children}
         </MusicProvider>
