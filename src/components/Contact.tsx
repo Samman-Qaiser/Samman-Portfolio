@@ -245,7 +245,7 @@ const handleMouseMove = (e: MouseEvent) => {
       <div className="anim-con  w-[90%] rounded-md mx-auto h-screen flex flex-col items-center justify-center relative bg-premium-pink">
         
         {/* EYES */}
-        <div id="contact" className="flex gap-10 mb-12 z-10">
+        <div  className="flex gap-10 mb-12 z-10">
           {[1, 2].map((i) => (
             <div key={i} className="w-[12vw] h-[12vw] bg-white rounded-full flex items-center justify-center shadow-[0_30px_60px_rgba(0,0,0,0.4)]">
               <div className="w-2/3 h-2/3 bg-[#111] rounded-full relative overflow-hidden">

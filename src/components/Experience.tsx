@@ -49,7 +49,7 @@ export default function ExperienceTimeline() {
             transition={{ duration: 0.8 }}
             className="flex flex-col md:flex-row md:items-end justify-between gap-10"
           >
-            <div className="max-w-3xl w-[50%]">
+            <div className="">
               <span className="text-xs uppercase tracking-[0.3em] text-premium-pink font-medium">
                 04 / Experience
               </span>

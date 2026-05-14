@@ -19,7 +19,22 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [activeLink, setActiveLink] = useState("Home");
-
+const handleScroll = (e, href) => {
+  if (href.startsWith("#")) {
+    e.preventDefault();
+    const targetId = href.replace("#", "");
+    const elem = document.getElementById(targetId);
+    
+    if (elem) {
+      elem.scrollIntoView({
+        behavior: "smooth",
+      });
+      // URL update karne ke liye (Optional)
+      window.history.pushState(null, "", href);
+      setActiveLink(navLinks.find(l => l.href === href)?.name || "Home");
+    }
+  }
+};
   useEffect(() => {
     setMounted(true);
     const updateTheme = () =>
@@ -140,9 +155,12 @@ export default function Navbar() {
           {/* Right */}
           <div className="flex items-center gap-3">
             <AnimatedThemeToggler />
-            <InteractiveHoverButton id="contact" className="hidden border-lavender lg:block">
-         Let’s Cook
-            </InteractiveHoverButton>
+         <InteractiveHoverButton 
+  onClick={(e) => handleScroll(e, "#contact")} 
+  className="hidden border-lavender lg:block"
+>
+  Let’s Cook
+</InteractiveHoverButton>
 
 
             {/* Mobile burger */}
@@ -227,7 +245,10 @@ export default function Navbar() {
                   >
                     <Link
                       href={link.href}
-                      onClick={() => setIsOpen(false)}
+                     onClick={(e) => {
+    handleScroll(e, link.href);
+    if (isOpen) setIsOpen(false); // Mobile menu band karne ke liye
+  }}
                       className="group flex flex-col"
                     >
                       <span className="text-[8px] font-mono text-premium-pink mb-1">
