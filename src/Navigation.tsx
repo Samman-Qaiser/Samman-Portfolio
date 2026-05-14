@@ -19,7 +19,8 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [activeLink, setActiveLink] = useState("Home");
-const handleScroll = (e, href) => {
+
+const handleScroll = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, href: string) => {
   if (href.startsWith("#")) {
     e.preventDefault();
     const targetId = href.replace("#", "");
@@ -29,9 +30,12 @@ const handleScroll = (e, href) => {
       elem.scrollIntoView({
         behavior: "smooth",
       });
-      // URL update karne ke liye (Optional)
+      // URL update karne ke liye
       window.history.pushState(null, "", href);
-      setActiveLink(navLinks.find(l => l.href === href)?.name || "Home");
+      
+      // Active link update karein
+      const link = navLinks.find(l => l.href === href);
+      if (link) setActiveLink(link.name);
     }
   }
 };
@@ -188,16 +192,7 @@ const handleScroll = (e, href) => {
         </motion.nav>
       </motion.div>
 
-      {/* ── CORNER LOGO MARK (top-left decorative) ── */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: scrollY > 80 ? 0 : 1, scale: scrollY > 80 ? 0 : 1 }}
-        transition={{ duration: 0.4 }}
-        className="fixed top-6 left-6 z-[99] hidden md:flex flex-col gap-1 pointer-events-none"
-      >
-        <span className="text-[8px] font-mono text-foreground/20 uppercase tracking-widest">Portfolio</span>
-        <span className="text-[8px] font-mono text-foreground/20 uppercase tracking-widest">© 2026</span>
-      </motion.div>
+ 
 
       {/* ── CURSOR FOLLOWER ── */}
       <CursorFollower />
