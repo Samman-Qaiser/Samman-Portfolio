@@ -110,7 +110,7 @@ export default function Navbar() {
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.6 }}
                         transition={{ duration: 0.2 }}
-                        className="text-[10px] uppercase tracking-[0.2em] font-medium text-foreground/70 hover:text-premium-pink transition-colors relative z-10"
+                        className="text-[12px]  uppercase tracking-[0.2em] font-medium text-foreground/90 hover:text-premium-pink transition-colors relative z-10"
                       >
                         {link.name}
                       </motion.span>
@@ -123,10 +123,10 @@ export default function Navbar() {
                         exit={{ opacity: 0 }}
                         className="flex items-center gap-1.5 relative z-10"
                       >
-                        <span className="text-[10px] font-mono text-lavender">
+                        <span className="text-[13px] font-mono text-lavender">
                           {link.num}
                         </span>
-                        <span className="text-[11px] uppercase tracking-[0.25em] font-medium text-foreground/70 hover:text-foreground transition-colors">
+                        <span className="text-[13px] uppercase tracking-[0.25em] font-medium text-foreground/70 hover:text-foreground transition-colors">
                           {link.name}
                         </span>
                       </motion.span>
