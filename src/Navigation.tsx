@@ -63,14 +63,14 @@ export default function Navbar() {
             backgroundColor: floated
               ? isDark
                 ? "rgba(10,10,10,0.85)"
-                : "rgba(255,255,255,0.85)"
+                : ""
               : "transparent",
             boxShadow: floated
               ? "0 8px 40px rgba(0,0,0,0.18), 0 0 0 1px rgba(255,255,255,0.06)"
               : "none",
           }}
           transition={{ type: "spring", stiffness: 180, damping: 28 }}
-          className="w-full flex items-center justify-between pointer-events-auto"
+          className="w-full bg-premium-purple/30 flex items-center justify-between pointer-events-auto"
         >
           {/* Logo */}
           <motion.div layout whileHover={{ scale: 1.04 }} transition={{ type: "spring", stiffness: 400 }}>
@@ -95,7 +95,8 @@ export default function Navbar() {
                   {activeLink === link.name && (
                     <motion.span
                       layoutId="active-dot"
-                      className="absolute inset-0 rounded-full bg-premium-pink/10 border border-premium-pink/20"
+                      className="absolute inset-0 rounded-full  bg-lavender/60
+                       border border-premium-pink/20"
                       transition={{ type: "spring", stiffness: 300, damping: 25 }}
                     />
                   )}
@@ -122,7 +123,7 @@ export default function Navbar() {
                         exit={{ opacity: 0 }}
                         className="flex items-center gap-1.5 relative z-10"
                       >
-                        <span className="text-[8px] font-mono text-premium-pink/50">
+                        <span className="text-[10px] font-mono text-lavender">
                           {link.num}
                         </span>
                         <span className="text-[11px] uppercase tracking-[0.25em] font-medium text-foreground/70 hover:text-foreground transition-colors">
@@ -139,7 +140,7 @@ export default function Navbar() {
           {/* Right */}
           <div className="flex items-center gap-3">
             <AnimatedThemeToggler />
-            <InteractiveHoverButton id="contact" className="hidden lg:block">
+            <InteractiveHoverButton id="contact" className="hidden border-lavender lg:block">
          Let’s Cook
             </InteractiveHoverButton>
 
