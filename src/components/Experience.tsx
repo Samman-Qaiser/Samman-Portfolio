@@ -6,7 +6,7 @@ const experiences = [
   {
     company: "Enfotrix",
     role: "Web Developer",
-    duration: "Aug — Sep 2025",
+    duration: "Feb 2024 — Mar 2025",
     logo: "/enfotrix.jpg",
   },
   {
