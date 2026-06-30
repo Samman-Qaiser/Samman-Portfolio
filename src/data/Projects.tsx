@@ -1,4 +1,27 @@
 export const projects = [
+{
+  title: "W3CMS - Full-Stack CMS, LMS & E-commerce Platform",
+  description:
+    "Designed and developed W3CMS, a full-stack content management platform combining CMS, LMS, and e-commerce in one system. Built 25+ REST API modules (Auth, Users, Blogs, Courses, Orders, Live Classes) using Node.js, Express, and MongoDB. Implemented JWT-based role authentication with protected routing for Admin, Manager, Instructor, and Customer roles, dynamic theme configuration allowing live customization of primary/secondary colors and sidebar layout, Cloudinary for media uploads, and Resend for transactional emails. Tested all endpoints extensively via Postman and deployed the backend on Vercel with MongoDB Atlas for production use.",
+  image: "/w3cms.png",
+  category: "MERN",
+  technologies: [
+    "React",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "Redux Toolkit",
+    "JWT Authentication",
+    "Protected Routing",
+    "Cloudinary",
+    "Vercel",
+    "Postman",
+    "Tailwind CSS",
+    "Recharts"
+  ],
+  liveUrl: "",
+  featured: true,
+},
     {
     title: "Doritaaga by Kriti",
     description:
