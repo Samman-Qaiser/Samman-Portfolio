@@ -19,7 +19,7 @@ export const projects = [
     "Tailwind CSS",
     "Recharts"
   ],
-  liveUrl: "",
+  liveUrl: "https://cms-orpin-eight-47.vercel.app/",
   featured: true,
 },
     {
